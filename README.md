@@ -14,13 +14,13 @@ I also provide post-quantum receipt signing (**ML-DSA-65 / FIPS 204**) so you ca
 
 ---
 
-## Availability
+## Available via Evaluation License
 
-| Platform | Install | Status |
-|----------|---------|--------|
-| **Python** | `pip install finalboss-idv` | Evaluation License |
-| **NPM** | `npm install @finalboss/idv-sdk` | Evaluation License |
-| **REST API** | `api.finalbosstech.com/v1` | Evaluation License |
+| Platform | Distribution | Access |
+|----------|--------------|--------|
+| **Python SDK** | Wheel (.whl) | Provided on request |
+| **NPM SDK** | Tarball (.tgz) | Provided on request |
+| **REST API** | Sandbox + credentials | Provided on request |
 
 ---
 
