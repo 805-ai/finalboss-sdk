@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalBoss SDK | Cryptographic Metering + Signed Reconciliation (PQC-Ready)</title>
+    <meta name="description" content="Server-side metering SDK with signed reconciliation bundles and post-quantum receipt signing. Available for evaluation.">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --border: #262626;
+            --text: #fafafa;
+            --text-muted: #a1a1aa;
+            --accent: #22c55e;
+            --accent-dim: #16a34a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        .tagline {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+        .manifesto {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .manifesto p {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+        .manifesto p:last-child { margin-bottom: 0; }
+        .manifesto strong { color: var(--accent); }
+        h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .availability {
+            margin-bottom: 3rem;
+        }
+        .availability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .availability-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1.25rem;
+        }
+        .availability-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .availability-item code {
+            display: block;
+            background: var(--bg);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+        .eval-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--accent);
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+        }
+        .features {
+            margin-bottom: 3rem;
+        }
+        .feature-list {
+            list-style: none;
+        }
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .feature-list li:last-child { border-bottom: none; }
+        .feature-list .icon {
+            color: var(--accent);
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        .feature-list .content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .feature-list .content p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .cta {
+            background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        .cta h2 {
+            color: var(--bg);
+            font-size: 1.25rem;
+            text-transform: none;
+            letter-spacing: normal;
+            margin-bottom: 0.5rem;
+        }
+        .cta p {
+            color: rgba(0,0,0,0.7);
+            margin-bottom: 1.5rem;
+        }
+        .cta a {
+            display: inline-block;
+            background: var(--bg);
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .cta a:hover { transform: translateY(-2px); }
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 480px) {
+            .container { padding: 2rem 1rem; }
+            h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Evaluation Available</span>
+
+        <h1>FinalBoss SDK</h1>
+        <p class="tagline">Cryptographic Metering + Signed Reconciliation (PQC-Ready)</p>
+
+        <div class="manifesto">
+            <p><strong>I'm not billing you. I'm preventing you from overpaying.</strong></p>
+            <p>I meter usage at the server-side decision point (ALLOW vs DENY), and I export a signed reconciliation bundle you can audit and dispute with confidence.</p>
+            <p>I also provide post-quantum receipt signing (<strong>ML-DSA-65 / FIPS 204</strong>) so you can keep your governance evidence future-resistant.</p>
+        </div>
+
+        <section class="availability">
+            <h2>Availability</h2>
+            <div class="availability-grid">
+                <div class="availability-item">
+                    <h3>Python SDK</h3>
+                    <code>pip install finalboss-idv</code>
+                    <span class="eval-badge">Evaluation License</span>
+                </div>
+                <div class="availability-item">
+                    <h3>NPM SDK</h3>
+                    <code>npm install @finalboss/idv-sdk</code>
+                    <span class="eval-badge">Evaluation License</span>
+                </div>
+                <div class="availability-item">
+                    <h3>REST API</h3>
+                    <code>api.finalbosstech.com/v1</code>
+                    <span class="eval-badge">Evaluation License</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Capabilities</h2>
+            <ul class="feature-list">
+                <li>
+                    <span class="icon">&#9679;</span>
+                    <div class="content">
+                        <h4>Server-Side Metering</h4>
+                        <p>Meter at the ALLOW/DENY decision point. No client-side tampering possible.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">&#9679;</span>
+                    <div class="content">
+                        <h4>Signed Reconciliation Bundles</h4>
+                        <p>Export cryptographically signed usage records for audit and dispute resolution.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">&#9679;</span>
+                    <div class="content">
+                        <h4>Post-Quantum Signatures</h4>
+                        <p>ML-DSA-65 (NIST FIPS 204) for quantum-resistant governance evidence.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">&#9679;</span>
+                    <div class="content">
+                        <h4>Hash-Chain Integrity</h4>
+                        <p>Append-only receipt chain with tamper-evident linking.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">&#9679;</span>
+                    <div class="content">
+                        <h4>Epoch-Based Revocation</h4>
+                        <p>O(1) instant mass invalidation for security incidents.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <div class="cta">
+            <h2>Request an Evaluation Key</h2>
+            <p>Include: org name, use case, deployment mode (cloud / on-prem / air-gapped)</p>
+            <a href="mailto:ABRAHAM@FINALBOSSTECH.COM?subject=FinalBoss%20SDK%20Evaluation%20Request">ABRAHAM@FINALBOSSTECH.COM</a>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 FinalBoss Technologies. All rights reserved.</p>
+            <p><a href="https://github.com/805-ai">GitHub</a></p>
+        </footer>
+    </div>
+</body>
+</html>
